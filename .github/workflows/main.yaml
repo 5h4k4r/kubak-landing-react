@@ -1,7 +1,7 @@
 name: Build and Publish
 
 on:
-  # run it on push to the default repository branch
+  # run it on push to the default repository branc
   push:
     branches: [main]
     paths-ignore:
