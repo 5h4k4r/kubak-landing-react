@@ -4,7 +4,7 @@
 FROM node:16 as build
 
 # Set the working directory
-WORKDIR /usr/local/app
+WORKDIR /app
 
 COPY package*.json .
 
@@ -12,7 +12,7 @@ COPY package*.json .
 RUN npm install
 
 # Add the source code to app
-COPY ./ /usr/local/app/
+COPY ./ ./
 
 # Generate the build of the application
 RUN npm run build
@@ -24,4 +24,4 @@ RUN npm run build
 FROM nginx:1.20-alpine
 
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/build /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
